@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    
+<style>
+    div{
+         position: absolute;
+         width: 250px;
+         height: 290px;
+         background-color:blueviolet;
+
+        }
+</style>
+</head>
+<body>
+
+<!-- <p>0</p>  
+<input class = 'minus' type="button" value="-">
+<input class = 'plus' type="button" value="+">
+
+
+
+
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+
+
+
+
+
+const li = document.body.querySelectorAll('li');
+ function handle(){
+      this.style.backgroundColor = 'red';
+  }
+  li.forEach(li=>li.addEventListener('click', handle));
+
+
+const p = document.querySelector('p');
+const minus = document.querySelector('.minus');
+const plus = document.querySelector('.plus');
+
+minus.addEventListener('click', () =>{ p.textContent=Number.parseInt(p.textContent)-1 });
+plus.addEventListener('click', () =>{ p.textContent=Number.parseInt(p.textContent)+1 }); -->
+
+<!-- ----------------------------------------------------------------------
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    </ul>
+    
+
+<script> 
+
+
+const ul = document.body.querySelector('ul')
+ul.addEventListener('click',(event)=>{
+
+if(event.target.tagName==='LI'){
+    event.target.style.backgroundColor='red';
+}
+})
+const button = document.body.querySelector('button');
+button.addEventListener('click', ()=>{
+    const li = document.createElement('li');
+    li.textContent=Math.random();
+    ul.append(li);
+})
+
+   
+</script>   -->
+
+
+
+ <div></div> 
+
+<script> 
+
+const div = document.body.querySelector('div');
+document.body.addEventListener('click' , function (event){ // если изменить mousemove - квадрат будет вместе ходить с курсором
+    div.style.left = event.clientX + 'px';
+    div.style.top = event.clientY + 'px';
+})
+
+
+
+
+
+const div = document.body.querySelector('div');
+document.body.addEventListener('mouseover' , function (event){ // если изменить mousemove - квадрат будет вместе ходить с курсором
+    div.style.left = (Number.parseInt(div.style.left) || 0) + Math.random()*200+'px';
+    div.style.top = (Number.parseInt(div.style.top) || 0) + Math.random()*200+'px';
+   })
+
+   // div.hidden=true - при наведении на body пропадает наш квадратик
+
+
+</script>
+
+
+
+</body>
+</html>
