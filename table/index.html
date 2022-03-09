@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td, th{
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+ 
+<script>
+    function getHeader(tdCount){
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        thead.append(tr);
+        for(let i=1; i < tdCount; i++){
+            const th = document.createElement('th');
+            th.textContent = `col${i}`;
+            tr.append(th)
+        }
+        const th = document.createElement('th');
+        th.textContent = 'action';
+        tr.append(th);
+        return thead;
+    }
+    function getRow(tdCount, rowNumber){
+        const tr = document.createElement('tr');
+        for(let i = 1; i < tdCount; i++){
+            const td = document.createElement('td');
+            td.textContent = `${rowNumber} - ${i}`;
+            tr.append(td);
+        }
+        const button = document.createElement('button');
+        button.textContent = 'row';
+        const td = document.createElement('td');
+        td.append(button);
+        tr.append(td);
+        return tr;
+    }
+    function getLastRow(tdCount){
+        const tr = document.createElement('tr');
+        for (let i = 0; i< tdCount-1; i++){
+            const td = document.createElement('td');
+            const button = document.createElement('button');
+            button.textContent = 'select';
+            td.append(button);
+            tr.append(td);
+        }
+        const td = document.createElement('td');
+        tr.append(td);
+        return tr;
+    }
+ 
+    const limit = 30;
+    const table = document.createElement('table');
+    document.body.append(table);
+    const tbody = document.createElement('tbody');
+    table.append(getHeader(limit))
+    table.append(tbody);
+    for(let i = 1; i < limit; i ++){
+        tbody.append(getRow(limit, i))
+    }
+    tbody.append(getLastRow(limit))
+    
+    table.addEventListener('click', function (event){
+        if(event.target.tagName === 'BUTTON'){
+            const tr = event.target.closest('tr');
+ 
+            if(tr.rowIndex === table.rows.length-1){
+                const index = event.target.closest('td').cellIndex;
+                document.body.querySelectorAll('td, th').forEach(td => td.style.backgroundColor = '')
+                Array.from(table.rows).forEach( t => {
+                    if(t.style.backgroundColor){
+                        t.cells.item(index).style.backgroundColor = 'pink';
+                    } else {
+                        t.cells.item(index).style.backgroundColor = 'green';
+                    }
+                })
+            } else {
+                Array.from(table.rows).forEach(t => t.style.backgroundColor = '');
+                tr.style.backgroundColor = 'gray';
+                Array.from(tr.cells).forEach(td=>{
+                    if(td.style.backgroundColor){
+                        td.style.backgroundColor = 'pink';
+                    }
+                })
+ 
+            }
+ 
+        }
+    })
+ 
+</script>
+</body>
+</html>
+RAW Paste Data
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td, th{
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    function getHeader(tdCount){
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        thead.append(tr);
+        for(let i=1; i < tdCount; i++){
+            const th = document.createElement('th');
+            th.textContent = `col${i}`;
+            tr.append(th)
+        }
+        const th = document.createElement('th');
+        th.textContent = 'action';
+        tr.append(th);
+        return thead;
+    }
+    function getRow(tdCount, rowNumber){
+        const tr = document.createElement('tr');
+        for(let i = 1; i < tdCount; i++){
+            const td = document.createElement('td');
+            td.textContent = `${rowNumber} - ${i}`;
+            tr.append(td);
+        }
+        const button = document.createElement('button');
+        button.textContent = 'row';
+        const td = document.createElement('td');
+        td.append(button);
+        tr.append(td);
+        return tr;
+    }
+    function getLastRow(tdCount){
+        const tr = document.createElement('tr');
+        for (let i = 0; i< tdCount-1; i++){
+            const td = document.createElement('td');
+            const button = document.createElement('button');
+            button.textContent = 'select';
+            td.append(button);
+            tr.append(td);
+        }
+        const td = document.createElement('td');
+        tr.append(td);
+        return tr;
+    }
+
+    const limit = 30;
+    const table = document.createElement('table');
+    document.body.append(table);
+    const tbody = document.createElement('tbody');
+    table.append(getHeader(limit))
+    table.append(tbody);
+    for(let i = 1; i < limit; i ++){
+        tbody.append(getRow(limit, i))
+    }
+    tbody.append(getLastRow(limit))
+    
+    table.addEventListener('click', function (event){
+        if(event.target.tagName === 'BUTTON'){
+            const tr = event.target.closest('tr');
+
+            if(tr.rowIndex === table.rows.length-1){
+                const index = event.target.closest('td').cellIndex;
+                document.body.querySelectorAll('td, th').forEach(td => td.style.backgroundColor = '')
+                Array.from(table.rows).forEach( t => {
+                    if(t.style.backgroundColor){
+                        t.cells.item(index).style.backgroundColor = 'pink';
+                    } else {
+                        t.cells.item(index).style.backgroundColor = 'green';
+                    }
+                })
+            } else {
+                Array.from(table.rows).forEach(t => t.style.backgroundColor = '');
+                tr.style.backgroundColor = 'gray';
+                Array.from(tr.cells).forEach(td=>{
+                    if(td.style.backgroundColor){
+                        td.style.backgroundColor = 'pink';
+                    }
+                })
+
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>
