@@ -1,4 +1,6 @@
 /* <script>
+let currentPage = 1;
+function loadNextUser(page){
 fetch("https://randomuser.me/api/?page=${page}6results=10")
 .then ((response) => response.json())
 .then((data)=>{
@@ -18,6 +20,7 @@ fetch("https://randomuser.me/api/?page=${page}6results=10")
   li.append(li);
  })
  })
+ }
  
  loadUsers(currentPage);
  const buttonNext = document.body.querySelectorAll('button')[1];
