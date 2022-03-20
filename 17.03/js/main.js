@@ -37,46 +37,67 @@ fetch("https://randomuser.me/api/?page=${page}6results=10")
 })
 </script> */
 
+
+
+
 const form = document.forms[0];
-form.addEventListener('submit', (e) =>{
+form.addEventListener('submit', function (e){
     e.preventDefault();
-
-
-
-
-
-
-
-
-
-
-
-    
+    const formData = {
+        password: this.elements.password.value,
+        repeatPassword: this.elements.repeatPassword.value,
+        email: this.elements.email.value
+    }
+    fetch('http://192.168.0.200:3000/form',
+        {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        })
+        .then((response) => {
+            console.log(response)
+            return response.json()
+        })
+        .then(json => {
+            console.log(json)
+            const div = document.body.querySelector('.errors');
+            div.textContent = json.message;
+            if(json.status === 'success'){
+                div.style.color = 'green'
+            } else {
+                div.style.color = 'red'
+            }
+        })
 })
-
-fetch('http://192.168.0.200:3000/form',
-{
-    method : 'POST',
-    headers: {"Content-Type": "application"},
-    body: JSON.stringify({name:'', age:35})
+ 
+RAW Paste Data
+const form = document.forms[0];
+form.addEventListener('submit', function (e){
+    e.preventDefault();
+    const formData = {
+        password: this.elements.password.value,
+        repeatPassword: this.elements.repeatPassword.value,
+        email: this.elements.email.value
+    }
+    fetch('http://192.168.0.200:3000/form',
+        {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        })
+        .then((response) => {
+            console.log(response)
+            return response.json()
+        })
+        .then(json => {
+            console.log(json)
+            const div = document.body.querySelector('.errors');
+            div.textContent = json.message;
+            if(json.status === 'success'){
+                div.style.color = 'green'
+            } else {
+                div.style.color = 'red'
+            }
+        })
 })
-.then((response) =>{
-    console.log(response)
-    return response.text()
-})
-.then(text =>{
-    console.log(text)
-   
-    const email = document.body.querySelector('#inputEmail3').value;
-    email.innerHTML = '';
-
-    const password = document.body.querySelector('#inputPassword3').value;
-    password.innerHTML = '';
-
-
-
-    
-   
-})
-
 
