@@ -1,5 +1,5 @@
 /* <script>
-fetch("https://randomuser.me/api/?page={}")
+fetch("https://randomuser.me/api/?page=${page}6results=10")
 .then ((response) => response.json())
 .then((data)=>{
   console.log(data);
@@ -8,15 +8,28 @@ fetch("https://randomuser.me/api/?page={}")
   const ul = document.body.querySelector('ul');
   ul.innerHTML='';
   data.results.forEach(user=>{
-  document.body.querySelector('p');
-  })
+  const li = document.createElement('li');
   const img = document.createElement('img');
-  img.src = "https://randomuser.me/api/portraits/women/84.jpg";
-  document.body.append(img);
+  img.src = user.picture.medium;
+  const span = document.createElement('span');
+  span.textContent = `${user.name.first} ${user.name.last}`
+  li.append(img);
+  li.append(span);
+  li.append(li);
+ })
+ })
+ 
+ loadUsers(currentPage);
+ const buttonNext = document.body.querySelectorAll('button')[1];
+ console.lpg(buttonNext);
+ buttonNext.addEventListener('click', ()=>{
+    currentPage++;
+     loadUsers(currentPage);
+     })
 
-  const email = document.createElement('email');
-  email = email.value;
-  document.body.append(email);
+//   const email = document.createElement('email');
+//   email = email.value;
+//   document.body.append(email);
 
 })
 </script> */
