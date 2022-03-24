@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    function delay(ms) {
+      return new Promise(resolve => { 
+        setTimeout(()=>{
+        resolve(); // переводит в состояние fulfiled 
+      },ms)
+     
+})
+}
+  
+  delay(3000)
+  .then(() => alert('выполнилось через 3 секунды'));
+
+
+  </script> -->
+
+<script>
+  const img = [
+    "https://icdn.lenta.ru/images/2018/05/02/18/20180502180544678/detail_f343d6aa039b93b8c9b5218bce074268.jpg",
+    "https://ichef.bbci.co.uk/news/800/cpsprodpb/12CBE/production/_117309967_neo4_976.jpg.webp" ,
+    "https://cdnimg.rg.ru/img/content/206/16/91/NIK_0544_d_850.jpg"
+]
+function loadImage(url) {
+      return new Promise(function (resolve , reject) { 
+       const img = document.createElement('img'); 
+       img.src = url;
+       img.onerror = () =>{
+         reject('error')
+       };
+       img.onload=()=>{
+         resolve(img)
+       }
+       })
+      }
+
+
+const promises = img.map(img => loadImage(img));
+Promise.any(promises)
+.then ( images =>{
+  document.body.append(images)
+})
+       
+
+
+</script>
+
+
+</body>
+</html>
