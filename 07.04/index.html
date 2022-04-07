@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.querySelector('#canvas');
+  canvas.width=800;
+  canvas.height=800;
+  let ctx = canvas.getContext('2d');
+
+function triangle(x,y){
+  ctx.fillStyle='rgb(0,150,0)';
+  ctx.beginPath();
+  ctx.moveTo(x,y);
+  ctx.lineTo(x+50,y+50);
+  ctx.lineTo(x-50,y+50);
+  ctx.fill();
+}
+function tree(x){
+  let height = 4;
+  for( let y=1; y<=3 ; y++){
+    triangle(x,y*45);
+    ctx.beginPath();
+    ctx.fillStyle='rgb(153, 51, 0)';
+    ctx.fillRect(x-15, 45*4, 30, 35);
+    ctx.stroke();
+    ctx.fill();
+    
+  }
+  
+}
+function draw(){
+  for( let x=1; x<=7 ; x++){
+    tree(100*x);
+  }
+}
+draw();
+
+function stump(){
+  for( let y=1; y<=7 ; y++){
+  ctx.rect(80, 190, 35, 45);
+    ctx.stroke();
+    ctx.fill();
+}
+}
+
+function mushroom(x,y){
+  ctx.beginPath();
+  ctx.fillRect();
+  ctx.fill();
+}
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
